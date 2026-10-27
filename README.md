@@ -1,6 +1,6 @@
 # Blog de Digitalización aplicada al sector productivo
 
-Blog en **PHP 8 + MySQL**, sin frameworks ni dependencias, pensado para la asignatura *Digitalización aplicada al sector productivo* (ASIR). Se despliega en cualquier hosting con PHP, **incluso gratuito como InfinityFree**, subiendo los archivos y siguiendo un asistente.
+Blog en **PHP 8 + MySQL**, sin frameworks ni dependencias, pensado para la asignatura *Digitalización aplicada al sector productivo* para el curso de formación profesional de ASIR. Se despliega en cualquier hosting con PHP, **incluso gratuito como InfinityFree**, subiendo los archivos y siguiendo un asistente.
 
 Todo el contenido se gestiona desde un panel de administración: entradas, categorías, etiquetas, imágenes y páginas. El código no lleva ningún texto del blog.
 
