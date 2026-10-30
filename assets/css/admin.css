@@ -216,3 +216,21 @@ body.admin-guest { background: radial-gradient(60rem 40rem at 10% -10%, rgba(47,
 .wiz-submit[disabled] { opacity: .5; cursor: not-allowed; }
 .config-out { font-family: var(--font-mono) !important; font-size: .85rem !important; }
 @media (max-width: 640px) { .wiz-grid { grid-template-columns: 1fr; } .wiz-steps { border-radius: var(--radius); } }
+
+/* Editor de juegos */
+.jg-editor textarea { font-family: var(--font-mono); font-size: .9375rem; line-height: 1.6; min-height: 26rem; resize: vertical; width: 100%; }
+.jg-formatos { margin-top: 1rem; }
+.jg-formatos h2 { font-size: 1.05rem; }
+.jg-formatos details { border-top: 1px solid var(--line); padding: .6rem 0; }
+.jg-formatos summary { cursor: pointer; font-weight: 600; }
+.jg-formatos details p { margin: .5rem 0; font-size: .9375rem; }
+.jg-formatos pre { margin: 0; padding: .75rem 1rem; background: var(--code-bg); border-radius: var(--radius); overflow-x: auto; font-size: .85rem; line-height: 1.55; }
+.jg-formatos pre code { background: none; padding: 0; }
+.jg-slugs { list-style: none; margin: .5rem 0 0; padding: 0; display: grid; gap: .45rem; font-size: .875rem; }
+.jg-slugs li { display: grid; gap: .1rem; }
+.jg-slugs code { overflow-wrap: anywhere; user-select: all; }
+.jg-check ul { margin: .4rem 0 0; padding-left: 1.2rem; }
+.jg-check-ok { margin: 0; }
+.jg-check-err li { color: var(--danger); }
+.jg-check-warn li { color: var(--ink-soft); }
+

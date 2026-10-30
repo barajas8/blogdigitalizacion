@@ -47,6 +47,7 @@ function public_header(string $title, string $description = '', string $active =
       <a href="<?= e(url()) ?>"<?= $active === 'inicio' ? ' aria-current="page"' : '' ?>>Inicio</a>
       <a href="<?= e(url_categorias()) ?>"<?= $active === 'categorias' ? ' aria-current="page"' : '' ?>>Categorías</a>
       <a href="<?= e(url_entradas()) ?>"<?= $active === 'entradas' ? ' aria-current="page"' : '' ?>>Entradas</a>
+      <?php if (juegos_publicados_count() > 0 || $active === 'juegos'): ?><a href="<?= e(url_juegos()) ?>"<?= $active === 'juegos' ? ' aria-current="page"' : '' ?>>Juegos</a><?php endif; ?>
       <a href="<?= e(url_sobre()) ?>"<?= $active === 'sobre' ? ' aria-current="page"' : '' ?>>Sobre nosotros</a>
       <button type="button" class="theme-toggle" data-theme-toggle hidden aria-label="Cambiar a modo oscuro">
         <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
@@ -73,6 +74,7 @@ function public_footer(): void
       <a href="<?= e(url()) ?>">Inicio</a>
       <a href="<?= e(url_categorias()) ?>">Categorías</a>
       <a href="<?= e(url_entradas()) ?>">Entradas</a>
+      <?php if (juegos_publicados_count() > 0): ?><a href="<?= e(url_juegos()) ?>">Juegos</a><?php endif; ?>
       <a href="<?= e(url_sobre()) ?>">Sobre nosotros</a>
     </nav>
   </div>
@@ -193,6 +195,7 @@ function admin_header(string $title, string $active = '', bool $withNav = true):
         'etiquetas'  => ['admin/etiquetas.php', 'Etiquetas'],
         'imagenes'   => ['admin/imagenes.php', 'Imágenes'],
         'paginas'    => ['admin/paginas.php', 'Páginas'],
+        'juegos'     => ['admin/juegos.php', 'Juegos'],
         'cuenta'     => ['admin/cuenta.php', 'Mi cuenta'],
         'seguridad'  => ['admin/seguridad.php', 'Seguridad'],
     ];

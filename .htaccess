@@ -1,0 +1,78 @@
+# =============================================================
+#  .htaccess principal (Apache, compatible con InfinityFree)
+# =============================================================
+
+# Sin listado de carpetas
+Options -Indexes
+DirectoryIndex index.php
+
+# Codificación por defecto
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Si las URLs amigables dan 404 en una subcarpeta, descomenta y ajusta:
+  # RewriteBase /nombre-de-la-subcarpeta/
+
+  # --- Redirección a HTTPS ---------------------------------------
+  # Descomenta estas 3 líneas DESPUÉS de activar el SSL en InfinityFree
+  # (si lo haces antes, la web dejará de cargar).
+  # RewriteCond %{HTTPS} off
+  # RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # --- Bloqueo de carpetas y archivos internos -------------------
+  RewriteRule ^(includes|sql)(/|$) - [F,L]
+  RewriteRule (^|/)\.(?!well-known) - [F,L]
+
+  # --- install.php queda bloqueado en cuanto existe includes/install.lock ---
+  RewriteCond %{REQUEST_FILENAME} ^(.*)/install\.php$
+  RewriteCond %1/includes/install.lock -f
+  RewriteRule ^install\.php$ - [F,L]
+
+  # --- URLs amigables --------------------------------------------
+  RewriteRule ^entrada/([a-z0-9-]+)/?$   post.php?slug=$1        [L,QSA]
+  RewriteRule ^categoria/([a-z0-9-]+)/?$ index.php?categoria=$1  [L,QSA]
+  RewriteRule ^etiqueta/([a-z0-9-]+)/?$  index.php?etiqueta=$1   [L,QSA]
+  RewriteRule ^sobre-nosotros/?$         sobre.php               [L,QSA]
+  RewriteRule ^categorias/?$             categorias.php          [L,QSA]
+  RewriteRule ^entradas/?$               entradas.php            [L,QSA]
+  RewriteRule ^juegos/?$                 juegos.php              [L,QSA]
+</IfModule>
+
+# --- Archivos que nunca se sirven directamente --------------------
+<FilesMatch "^(config\.php|.*\.(sql|md|lock|log|ini|bak|sh)|\.ht.*)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# --- Cabeceras de seguridad (PHP también las envía) ---------------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header unset X-Powered-By
+</IfModule>
+
+# --- Caché de recursos estáticos (menos peticiones al servidor) ----
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 30 days"
+  ExpiresByType application/javascript "access plus 30 days"
+  ExpiresByType text/javascript "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType image/webp .webp
+</IfModule>

@@ -77,6 +77,7 @@ Las entradas, las cuentas y las páginas están en la **base de datos**, y las i
 2. Sube los archivos nuevos **sobrescribiendo**, pero **sin** `install.php`.
 3. No borres `config.php`, `uploads/` ni `includes/install.lock`.
 4. Entra al panel. Si la versión nueva necesita columnas nuevas, la web las **añade sola**: solo añade, nunca borra. Si fallara, ejecuta en phpMyAdmin el archivo de `sql/migracion-*.sql` que te indique el panel.
+5. **Desde la 3.0 a la 3.1 (Juegos):** sube también el `.htaccess` de la raíz, porque añade la dirección `/juegos`. La tabla de juegos se crea sola la primera vez que entras en *Panel > Juegos*.
 
 ## Reinstalar sin perder las entradas
 

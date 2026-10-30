@@ -1,0 +1,27 @@
+# =============================================================
+#  uploads/: aquí solo se sirven imágenes. Nunca se ejecuta código.
+#  Solo usa directivas que InfinityFree permite en .htaccess
+#  (Options -ExecCGI, php_flag o RemoveHandler provocan un error 500
+#  en hostings compartidos y dejaban TODAS las imágenes rotas).
+# =============================================================
+Options -Indexes
+
+# Deniega TODO salvo imágenes con nombre seguro (.jpg, .jpeg, .png, .webp).
+# Un .php aquí dentro recibe 403 antes de llegar a ejecutarse.
+<IfModule mod_authz_core.c>
+  Require all denied
+  <FilesMatch "^[A-Za-z0-9_-]+\.(jpe?g|png|webp)$">
+    Require all granted
+  </FilesMatch>
+</IfModule>
+<IfModule !mod_authz_core.c>
+  Order deny,allow
+  Deny from all
+  <FilesMatch "^[A-Za-z0-9_-]+\.(jpe?g|png|webp)$">
+    Allow from all
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+</IfModule>

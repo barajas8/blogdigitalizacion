@@ -1,0 +1,13 @@
+# Datos de cada instalación: nunca se suben al repositorio
+config.php
+includes/sessions/
+includes/*.lock
+uploads/*
+!uploads/index.html
+!uploads/.htaccess
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

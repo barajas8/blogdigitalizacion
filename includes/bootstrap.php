@@ -39,6 +39,7 @@ require __DIR__ . '/db.php';
 require __DIR__ . '/markdown.php';
 require __DIR__ . '/session.php';
 require __DIR__ . '/security.php';
+require __DIR__ . '/juegos.php';
 require __DIR__ . '/layout.php';
 
 // Primera vez: sin config.php, todo lleva al asistente de instalación.

@@ -1,5 +1,13 @@
 # Cambios
 
+## 3.1.0
+- Sección **Juegos**: test, verdadero o falso, clasificar, memoria, ahorcado, sopa de letras, completa la frase y «¿de qué entrada es?».
+- *Panel > Juegos*: se escriben con un formato de texto sencillo, con ayuda de cada tipo, lista de slugs y botón «Comprobar» que marca los errores por línea.
+- Cada pregunta puede enlazar a una entrada (`@ slug`). Al terminar, el juego propone repasar las entradas falladas.
+- El enlace «Juegos» del menú solo aparece cuando hay al menos un juego publicado.
+- La tabla `juegos` se crea sola en blogs ya instalados (o con `sql/migracion-juegos.sql`).
+- Vuelven al repositorio los `.htaccess` (raíz, `includes/`, `sql/`, `uploads/`) y el `.gitignore`.
+
 ## 3.0.0
 - Asistente de instalación: pide la base de datos, el nombre del blog y las cuentas, y escribe `config.php` solo.
 - Modo «reconectar un blog existente» para reinstalar sin perder nada.

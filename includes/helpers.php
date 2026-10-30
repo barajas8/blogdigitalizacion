@@ -127,6 +127,12 @@ function url_entradas(): string
     return cfg('pretty_urls') ? url('entradas') : url('entradas.php');
 }
 
+/** Página de juegos. */
+function url_juegos(): string
+{
+    return cfg('pretty_urls') ? url('juegos') : url('juegos.php');
+}
+
 /** Añade parámetros GET a una URL (los vacíos se omiten). */
 function with_query(string $u, array $params): string
 {
